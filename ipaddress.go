@@ -5,13 +5,18 @@ import "fmt"
 type IPAddr [4]byte
 
 func main() {
-	fmt.Println("counting")
-
-	for i := 0; i < 10; i++ {
-		defer fmt.Println(i)
+	hosts := map[string]IPAddr{
+		"loopback": {1, 2, 3, 4},
+		"gdns":     {3, 4, 5, 6},
 	}
 
-	fmt.Println("done")
+	for st, ip := range hosts {
+		fmt.Println(st, ip)
+	}
+
+	defer fmt.Println("world")
+
+	fmt.Println("hello")
 }
 
 func (i IPAddr) String() string {
